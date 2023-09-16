@@ -11,6 +11,7 @@
       (usernameChange)="receiveUsernameTwo($event)"
     ></app-text-input>
   </div>
+  <p *ngIf="error !== ''" class="error">{{ error }}</p>
   <br />
   <button class="submit-button" (click)="onSubmit()">Duel</button>
   <br />

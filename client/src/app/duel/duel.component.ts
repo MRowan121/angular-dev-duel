@@ -55,19 +55,31 @@ export class DuelComponent implements OnInit {
     this.usernameTwo = valueEmitted;
   }
 
+  error: any = '';
   valid: boolean = false;
 
   onSubmit() {
-    this.userService
-      .duelUsers(this.usernameOne, this.usernameTwo)
-      .then((response: any) => {
+    this.userService.duelUsers(this.usernameOne, this.usernameTwo).then(
+      (response: any) => {
         if (response[0].username && response[1].username) {
+          this.error = '';
           this.user1 = response[0];
           this.user2 = response[1];
           this.valid = true;
           this.calcWinner(this.user1, this.user2);
         }
-      });
+      },
+      (error: any) => {
+        console.log(error);
+        if (error.status === 400) {
+          this.error = `${error.statusText}`;
+        } else if (error.status === 404) {
+          this.error = `Username ${error.statusText}`;
+        } else {
+          this.error = 'Error. Please try again.';
+        }
+      }
+    );
   }
 
   calcPerfectRepoPercentage(user: userInfo): number {

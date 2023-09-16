@@ -23,3 +23,9 @@
 span {
   font-size: small;
 }
+
+.error {
+  font-size: x-large;
+  color: red;
+  text-align: center;
+}
