@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/user.service';
 import { userInfo } from '../app.component';
+import { number } from 'joi';
 
 @Component({
   selector: 'app-duel',
@@ -40,6 +41,7 @@ export class DuelComponent implements OnInit {
     followers: 0,
     following: 0,
   };
+  winner: string = '';
 
   constructor(private userService: UserService) {}
 
@@ -63,7 +65,20 @@ export class DuelComponent implements OnInit {
           this.user1 = response[0];
           this.user2 = response[1];
           this.valid = true;
+          this.calcWinner(this.user1, this.user2);
         }
       });
+  }
+
+  calcPerfectRepoPercentage(user: userInfo): number {
+    return user['perfect-repos'] / user['public-repos'];
+  }
+
+  calcWinner(userOne: userInfo, userTwo: userInfo) {
+    let userOnePercent = this.calcPerfectRepoPercentage(userOne);
+    let userTwoPercent = this.calcPerfectRepoPercentage(userTwo);
+    this.winner =
+      userOnePercent > userTwoPercent ? userOne.username : userTwo.username;
+    return this.winner;
   }
 }

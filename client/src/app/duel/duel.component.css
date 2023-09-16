@@ -14,3 +14,12 @@
   width: 100%;
   justify-content: space-around;
 }
+
+.winner-text {
+  text-align: center;
+  font-size: larger;
+}
+
+span {
+  font-size: small;
+}
