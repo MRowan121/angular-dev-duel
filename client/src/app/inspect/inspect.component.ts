@@ -33,9 +33,14 @@ export class InspectComponent implements OnInit {
     this.username = valueEmitted;
   }
 
+  valid: boolean = false;
+
   onSubmit() {
-    this.userService
-      .inspectUser(this.username)
-      .then((response: any) => (this.user = response));
+    this.userService.inspectUser(this.username).then((response: any) => {
+      if (response.username) {
+        this.user = response;
+        this.valid = true;
+      }
+    });
   }
 }

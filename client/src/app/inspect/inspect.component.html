@@ -1,14 +1,10 @@
 <div
-  style="
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20vh;
-  "
+  style="display: flex; flex-direction: column; align-items: center"
+  [ngStyle]="{ 'margin-top': valid ? '2vh' : '20vh' }"
 >
   <app-text-input (usernameChange)="receiveUsername($event)"></app-text-input>
   <br />
   <br />
   <button class="submit-button" (click)="onSubmit()">Inspect</button>
-  <app-user [user]="user"></app-user>
+  <app-user *ngIf="valid" [user]="user"></app-user>
 </div>
