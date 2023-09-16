@@ -1,1 +1,62 @@
-<p>user works!</p>
+<div class="user-info">
+  <div class="image-container">
+    <img src="{{ user.avatar_url }}" alt="{{ user.name }}" class="user-image" />
+    <p>{{ user.bio }}</p>
+  </div>
+  <div class="details-section">
+    <div class="github-info">
+      <p class="github-label">username</p>
+      <p class="github-content">{{ user.username }}</p>
+    </div>
+
+    <div class="github-info">
+      <p class="github-label">name</p>
+      <p class="github-content">{{ user.name }}</p>
+    </div>
+
+    <div class="github-info">
+      <p class="github-label">location</p>
+      <p class="github-content">{{ user.location }}</p>
+    </div>
+
+    <div class="github-info">
+      <p class="github-label">titles</p>
+      <p class="github-content">{{ user.titles }}</p>
+    </div>
+
+    <div class="github-info">
+      <p class="github-label">favorite language</p>
+      <p class="github-content">{{ user["favorite-language"] }}</p>
+    </div>
+
+    <div class="github-info">
+      <p class="github-label">total stars</p>
+      <p class="github-content">{{ user["total-stars"] }}</p>
+    </div>
+
+    <div class="github-info">
+      <p class="github-label">highest star count</p>
+      <p class="github-content">{{ user["highest-starred"] }}</p>
+    </div>
+
+    <div class="github-info">
+      <p class="github-label">public repos</p>
+      <p class="github-content">{{ user["public-repos"] }}</p>
+    </div>
+
+    <div class="github-info">
+      <p class="github-label">perfect repos</p>
+      <p class="github-content">{{ user["perfect-repos"] }}</p>
+    </div>
+
+    <div class="github-info">
+      <p class="github-label">followers</p>
+      <p class="github-content">{{ user.followers }}</p>
+    </div>
+
+    <div class="github-info">
+      <p class="github-label">following</p>
+      <p class="github-content">{{ user.following }}</p>
+    </div>
+  </div>
+</div>
