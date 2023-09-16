@@ -4,7 +4,7 @@
 >
   <app-text-input (usernameChange)="receiveUsername($event)"></app-text-input>
   <br />
-  <br />
   <button class="submit-button" (click)="onSubmit()">Inspect</button>
+  <br />
   <app-user *ngIf="valid" [user]="user"></app-user>
 </div>

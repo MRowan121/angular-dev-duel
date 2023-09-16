@@ -1,10 +1,6 @@
 <div
-  style="
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20vh;
-  "
+  style="display: flex; flex-direction: column; align-items: center"
+  [ngStyle]="{ 'margin-top': valid ? '2vh' : '20vh' }"
 >
   <div style="display: flex; flex-direction: row">
     <app-text-input
@@ -16,6 +12,10 @@
     ></app-text-input>
   </div>
   <br />
-  <br />
   <button class="submit-button" (click)="onSubmit()">Duel</button>
+  <br />
+  <div class="comp-box">
+    <app-user *ngIf="valid" [user]="user1"></app-user>
+    <app-user *ngIf="valid" [user]="user2"></app-user>
+  </div>
 </div>
