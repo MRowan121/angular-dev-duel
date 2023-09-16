@@ -3,6 +3,7 @@
   [ngStyle]="{ 'margin-top': valid ? '2vh' : '20vh' }"
 >
   <app-text-input (usernameChange)="receiveUsername($event)"></app-text-input>
+  <p *ngIf="error !== ''" class="error">{{ error }}</p>
   <br />
   <button class="submit-button" (click)="onSubmit()">Inspect</button>
   <br />

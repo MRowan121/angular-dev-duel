@@ -33,14 +33,28 @@ export class InspectComponent implements OnInit {
     this.username = valueEmitted;
   }
 
+  error: any = '';
   valid: boolean = false;
 
   onSubmit() {
-    this.userService.inspectUser(this.username).then((response: any) => {
-      if (response.username) {
-        this.user = response;
-        this.valid = true;
+    this.userService.inspectUser(this.username).then(
+      (response: any) => {
+        if (response.username) {
+          this.error = '';
+          this.user = response;
+          this.valid = true;
+        }
+      },
+      (error: any) => {
+        console.log(error);
+        if (error.status === 400) {
+          this.error = `${error.statusText}`;
+        } else if (error.status === 404) {
+          this.error = `Username ${error.statusText}`;
+        } else {
+          this.error = 'Error. Please try again.';
+        }
       }
-    });
+    );
   }
 }
