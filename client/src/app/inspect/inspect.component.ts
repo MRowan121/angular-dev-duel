@@ -46,7 +46,6 @@ export class InspectComponent implements OnInit {
         }
       },
       (error: any) => {
-        console.log(error);
         if (error.status === 400) {
           this.error = `${error.statusText}`;
         } else if (error.status === 404) {
